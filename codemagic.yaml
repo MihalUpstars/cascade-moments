@@ -16,7 +16,7 @@ workflows:
 
       vars:
         BUNDLE_ID: "com.mauryccas.cadekrawch"
-        XCODE_WORKSPACE: "Cascade Moments"
+        XCODE_WORKSPACE: "Cascade Moments.xcodeproj"
         XCODE_SCHEME: "Cascade Moments"
         APP_STORE_APPLE_ID: 6742231342
 
@@ -42,7 +42,7 @@ workflows:
       - name: Build ipa for distribution
         script: | 
           set -o pipefail && xcode-project build-ipa \
-            --project "Cascade Moments" \
+            --project "Cascade Moments.xcodeproj" \
             --scheme "Cascade Moments" \
             | tee /tmp/xcodebuild.log
 
