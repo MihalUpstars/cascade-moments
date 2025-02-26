@@ -6,15 +6,14 @@ struct ContentView: View {
     @Environment(\.window) private var window: UIWindow?
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-            Text("Hello, world!")
-           
-        }
-        .onAppear(){
-            showLoginViewController()
-        }
+        ZStack {
+          
+            VStack {
+                MyViewControllerRepresentable()
+            }
+            .edgesIgnoringSafeArea(.all)
+                    
+                }
     }
     
     private func showLoginViewController() {
@@ -25,8 +24,21 @@ struct ContentView: View {
                window?.rootViewController = rootVC
            }
        }
-}
 
+}
+struct MyViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+        navigationController.navigationBar.tintColor = .black
+        return navigationController
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+       
+    }
+}
 #Preview {
     ContentView()
 }
