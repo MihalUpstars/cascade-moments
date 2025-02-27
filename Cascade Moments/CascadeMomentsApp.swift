@@ -35,7 +35,7 @@ struct CascadeMomentsApp: App {
     
     
     @UIApplicationDelegateAdaptor(AppDelegateNapoLega.self) var delegate
-    @State private var appState2: AppState2 = .game
+    @State private var appState2: AppState2 = .loading1
     
     enum AppState2 {
         case loading1, loading2, webView, game
@@ -51,7 +51,7 @@ struct CascadeMomentsApp: App {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .background(
-                        Image("loader 1")
+                        Image("loader 97")
                             .resizable()
                             .ignoresSafeArea()
                     )
@@ -61,7 +61,7 @@ struct CascadeMomentsApp: App {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .background(
-                        Image("loader 2")
+                        Image("loader 98")
                             .resizable()
                             .ignoresSafeArea()
                     )
@@ -83,14 +83,14 @@ struct CascadeMomentsApp: App {
 
     @MainActor
     private func startLoadingAnimation() {
-        /*DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             appState2 = .loading2
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 appState2 = .game
                
             }
-        } */
-        appState2 = .game
+        }
+        
        
        
     }
